@@ -9,7 +9,6 @@ do
   local _obj_0 = require("unix")
   chdir, mkdir, opendir, getcwd, rmrf, execve, nanosleep, fork, exit, DT_DIR = _obj_0.chdir, _obj_0.mkdir, _obj_0.opendir, _obj_0.getcwd, _obj_0.rmrf, _obj_0.execve, _obj_0.nanosleep, _obj_0.fork, _obj_0.exit, _obj_0.DT_DIR
 end
-print(getcwd())
 ProgramDirectory(getcwd())
 local html = require("html")
 local concat
@@ -51,7 +50,7 @@ container = {
 }
 setmetatable(container, container)
 local vulgata = container()
-for liber, capitulum, versus, verba in textus:gmatch("(%w+)%s+(%d+)%s+(%d+)%s+([^\n]+)") do
+for liber, capitulum, versus, verba in textus:gmatch("([^\t\n]+)\t+(%d+)%s+(%d+)%s+([^\n]+)") do
   vulgata[liber][capitulum][versus] = verba
 end
 local html_liber

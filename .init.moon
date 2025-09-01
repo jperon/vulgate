@@ -36,7 +36,7 @@ container =
 setmetatable container, container
 
 vulgata = container!
-for liber, capitulum, versus, verba in textus\gmatch"(%w+)%s+(%d+)%s+(%d+)%s+([^\n]+)"
+for liber, capitulum, versus, verba in textus\gmatch"([^\t\n]+)\t+(%d+)%s+(%d+)%s+([^\n]+)"
   vulgata[liber][capitulum][versus] = verba
 
 html_liber = => with html
@@ -138,11 +138,11 @@ export OnHttpRequest = ->
   path = GetPath!\match"^/(.*)"
 
   return Route! if path\sub(-4) == ".css"
-  
+
   if path == "vulgata.epub"
     make_epub!
-    return Route! 
-  
+    return Route!
+
   with html
     title, content = if path == ''
       "Sacra Scriptura", .h1("Sacra Scriptura", .small .a href:"/vulgata.epub", "(epub)") ..
@@ -152,7 +152,7 @@ export OnHttpRequest = ->
     else
       liber = path\sub(1,1)\upper! .. path\sub(2)\lower!
       "Sacra Scriptura - #{liber}", #vulgata[liber] > 0 and html_liber(liber) or ServeRedirect 302, "/"
-    
+
     Write .html(
       lang:'lat'
       .head(

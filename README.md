@@ -17,7 +17,7 @@ Here you have an accented version of the old Vulgate.
 ## List of proper names of the Vulgate (`vulgate_proper_names.txt`)
 
 You will find here too a list of all proper names of 3 syllables or more in the Vulgate, extracted from the previous text. The goal is to elaborate some rules for the accentuation of latinized hebrew and greeks proper names. These rules are gathered [here](https://github.com/gregorio-project/latin-ecclesiastic-accents/blob/master/doc/accentuation-rules.md).
- 
+
 
 ## Yearly cursus (`vulgate_yearly_cursus.txt`)
 
@@ -39,5 +39,5 @@ run following commands:
 
 ```sh
 moonc .init.moon
-./zip vulgata.com init.lua
+./zip vulgata.com .init.lua
 ```
